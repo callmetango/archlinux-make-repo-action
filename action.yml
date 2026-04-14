@@ -16,7 +16,7 @@ inputs:
     required: false
   flags:
     description: 'Extra flags for repo_add'
-    default: '--remove'
+    default: ''
     required: false
 
 runs:
