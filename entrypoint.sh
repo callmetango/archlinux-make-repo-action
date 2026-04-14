@@ -10,7 +10,7 @@ log_endgroup() {
 	printf "::endgroup::\n"
 }
 
-HOME=/home/builder
+HOME=/home/runner
 
 log_group "Copying files from $GITHUB_WORKSPACE to $HOME/work"
 mkdir -p "$HOME"/work
