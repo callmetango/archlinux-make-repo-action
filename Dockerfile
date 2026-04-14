@@ -2,13 +2,13 @@
 FROM docker.io/library/archlinux:multilib-devel
 
 # Install dependencies
-RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
+RUN pacman -Syu --needed --noconfirm pacman-contrib
 
 # Setup user
-RUN useradd -m builder && \
-    echo 'builder ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
-WORKDIR /home/builder
-USER builder
+RUN useradd -m runner && \
+    echo 'runner ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+WORKDIR /home/runner
+USER runner
 
 # Copy files
 #COPY LICENSE README.md /
