@@ -21,7 +21,7 @@ cp -rfv "$WORKPATH"/* ./
 log_endgroup
 
 log_group "Running repo-add"
-repo-add "$INPUT_REPONAME".db"$INPUT_COMPRESSION" *.pkg.*
+repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.*
 log_endgroup
 
 log_group "Copying files from $HOME/work to $WORKPATH"
