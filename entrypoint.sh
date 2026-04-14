@@ -21,7 +21,7 @@ log_endgroup
 log_group "Running repo-add"
 pwd
 ls -la **
-repo-add foo.db *.pkg.*
+repo-add foo.db.tar.gz *.pkg.*
 log_endgroup
 
 log_group "Copying files from $HOME/work to $WORKPATH"
