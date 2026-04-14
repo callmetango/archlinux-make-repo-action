@@ -19,7 +19,7 @@ cp -rfv "$INPUT_PATH"/ ./
 log_endgroup
 
 log_group "Running repo_add"
-repo-add $INPUT_FLAGS "$INPUT_REPONAME".db.tar.zst *.pkg.*
+repo-add $INPUT_FLAGS "${INPUT_REPONAME}.db.tar.zst" *.pkg.*
 log_endgroup
 
 log_group "Copying files from $HOME/work to $WORKPATH"
