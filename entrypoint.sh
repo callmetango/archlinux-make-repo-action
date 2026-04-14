@@ -19,6 +19,7 @@ cp -rfv "$GITHUB_WORKSPACE/$INPUT_PATH"/ ./
 log_endgroup
 
 log_group "Running repo_add"
+pwd
 ls -la **
 repo-add $INPUT_FLAGS "${INPUT_REPONAME}.db.tar.zst" *.pkg.*
 log_endgroup
