@@ -12,7 +12,7 @@ inputs:
     required: true
   path:
     description: 'Location for this action to run'
-    default: ''
+    default: '.'
     required: false
   flags:
     description: 'Extra flags for repo_add'
