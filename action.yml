@@ -7,7 +7,7 @@ branding:
   color: 'blue'
 
 inputs:
-  repo-name:
+  reponame:
     description: 'The name of the repo'
     required: true
   path:
@@ -23,6 +23,6 @@ runs:
   using: 'docker'
   image: Dockerfile
   args:
-    - ${{ inputs.repo-name }}
+    - ${{ inputs.reponame }}
     - ${{ inputs.path }}
     - ${{ inputs.flags }}
