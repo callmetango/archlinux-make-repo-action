@@ -19,8 +19,6 @@ cp -rfv "$GITHUB_WORKSPACE/$INPUT_PATH"/* ./
 log_endgroup
 
 log_group "Running repo-add"
-pwd
-ls -la **
 repo-add foo.db.tar.gz *.pkg.*
 log_endgroup
 
