@@ -21,8 +21,7 @@ log_endgroup
 log_group "Running repo-add"
 pwd
 ls -la **
-printf "Executing: repo-add $INPUT_FLAGS "${INPUT_REPONAME}.db.tar.zst" *.pkg.*\n"
-repo-add foo.db.tar.xz sonic-workspace-wallpapers-6.6.3-2-any.pkg.tar.zst
+repo-add ./foo.db.tar.xz ./sonic-workspace-wallpapers-6.6.3-2-any.pkg.tar.zst
 log_endgroup
 
 log_group "Copying files from $HOME/work to $WORKPATH"
