@@ -23,6 +23,6 @@ runs:
   using: 'docker'
   image: Dockerfile
   args:
-    - ${{ inputs.repo_name }}
+    - ${{ inputs.repo-name }}
     - ${{ inputs.path }}
     - ${{ inputs.flags }}
