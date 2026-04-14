@@ -19,7 +19,7 @@ cp -rfv "$INPUT_PATH"/ ./
 log_endgroup
 
 log_group "Running repo_add"
-repo_add $INPUT_FLAGS $INPUT_REPO_NAME *.pkg.*
+repo_add $INPUT_FLAGS $INPUT_REPONAME *.pkg.*
 log_endgroup
 
 log_group "Copying files from $HOME/work to $WORKPATH"
