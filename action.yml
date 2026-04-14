@@ -1,0 +1,24 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: "Arch Linux's repo add action"
+description: "GitHub Action to add Arch Linux's packages to a repo"
+author: 'callmetango'
+branding:
+  icon: 'package'
+  color: 'blue'
+
+inputs:
+  path:
+    description: 'Location for this action to run'
+    default: ''
+    required: false
+  flags:
+    description: 'Extra flags for repo_add'
+    default: '--remove'
+    required: false
+
+runs:
+  using: 'docker'
+  image: Dockerfile
+  args:
+    - ${{ inputs.path }}
+    - ${{ inputs.flags }}
