@@ -15,11 +15,11 @@ HOME=/home/builder
 log_group "Copying files from $GITHUB_WORKSPACE to $HOME/work"
 mkdir -p "$HOME"/work
 cd "$HOME"/work
-cp -rfv "$INPUT_PATH"/ ./
+cp -rfv "$GITHUB_WORKSPACE/$INPUT_PATH"/ ./
 log_endgroup
 
 log_group "Running repo_add"
-repo-add $INPUT_FLAGS "${INPUT_PATH}/${INPUT_REPONAME}.db.tar.zst" "${INPUT_PATH}"/*.pkg.*
+repo-add $INPUT_FLAGS "${INPUT_REPONAME}.db.tar.zst" *.pkg.*
 log_endgroup
 
 log_group "Copying files from $HOME/work to $WORKPATH"
