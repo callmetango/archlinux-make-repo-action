@@ -12,7 +12,7 @@ USER builder
 
 # Copy files
 #COPY LICENSE README.md /
-COPY entrypoint.sh /entrypoint.sh
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
