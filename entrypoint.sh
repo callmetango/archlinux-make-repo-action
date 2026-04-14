@@ -24,7 +24,8 @@ ls -la **
 repo-add foo.db.tar.gz *.pkg.*
 log_endgroup
 
-log_group "Copying files from $HOME/work to $WORKPATH"
 WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
-sudo cp -fvu * "${WORKPATH%/}"
+WORKPATH="${WORKPATH%/}"
+log_group "Copying files from $HOME/work to $WORKPATH"
+sudo cp -fvu * "$WORKPATH"
 log_endgroup
