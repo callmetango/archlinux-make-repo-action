@@ -11,7 +11,7 @@ WORKDIR /home/builder
 USER builder
 
 # Copy files
-COPY LICENSE README.md /
+#COPY LICENSE README.md /
 COPY entrypoint.sh /entrypoint.sh
 
 # Set entrypoint
