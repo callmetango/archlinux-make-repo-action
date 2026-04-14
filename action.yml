@@ -14,6 +14,10 @@ inputs:
     description: 'Location for this action to run'
     default: '.'
     required: false
+  compression:
+    description: 'Database compression'
+    default: '.tar.zst'
+    required: false
   flags:
     description: 'Extra flags for repo-add'
     default: ''
@@ -25,4 +29,5 @@ runs:
   args:
     - ${{ inputs.reponame }}
     - ${{ inputs.path }}
+    - ${{ inputs.compression }}
     - ${{ inputs.flags }}
