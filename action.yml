@@ -7,6 +7,9 @@ branding:
   color: 'blue'
 
 inputs:
+  repo-name:
+    description: 'The name of the repo'
+    required: true
   path:
     description: 'Location for this action to run'
     default: ''
