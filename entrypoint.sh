@@ -15,7 +15,7 @@ HOME=/home/builder
 log_group "Copying files from $GITHUB_WORKSPACE to $HOME/work"
 mkdir -p "$HOME"/work
 cd "$HOME"/work
-cp -rfv "$INPUT_PATH"/ ./
+cp -rfv "$GITHUB_WORKSPACE/$INPUT_PATH"/ ./
 log_endgroup
 
 log_group "Running repo_add"
