@@ -11,19 +11,19 @@ log_endgroup() {
 }
 
 HOME=/home/runner
+WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
+WORKPATH="${WORKPATH%/}"
 
-log_group "Copying files from $GITHUB_WORKSPACE to $HOME/work"
+log_group "Copying files from $WORKPATH to $HOME/work"
 mkdir -p "$HOME"/work
 cd "$HOME"/work
-cp -rfv "$GITHUB_WORKSPACE/$INPUT_PATH"/* ./
+cp -rfv "$WORKPATH"/* ./
 log_endgroup
 
 log_group "Running repo-add"
 repo-add foo.db.tar.gz *.pkg.*
 log_endgroup
 
-WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
-WORKPATH="${WORKPATH%/}"
 log_group "Copying files from $HOME/work to $WORKPATH"
 sudo cp -fvu * "$WORKPATH"
 log_endgroup
