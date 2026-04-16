@@ -5,22 +5,18 @@ set -e -u
 GL_GROUP_OPEN=0
 
 glgrp() {
-	if [ GL_GROUP_OPEN = 1 ]; then
-		printf "::endgroup::\n"
-	fi
+	[ $GL_GROUP_OPEN = 1 ] && printf "::endgroup::\n"
 	printf "::group::${1}\n"
 	GL_GROUP_OPEN=1
 }
 
 glgrpend() {
-	if [ GL_GROUP_OPEN = 1 ]; then
-		printf "::endgroup::\n"
-	fi
+	[ $GL_GROUP_OPEN = 1 ] && printf "::endgroup::\n"
 	GL_GROUP_OPEN=0
 }
 
 glend() {
-	if [ GL_GROUP_OPEN = 1 ]; then
+	if [ $GL_GROUP_OPEN = 1 ]; then
 		printf "::endgroup::\n"
 		GL_GROUP_OPEN=0
 	fi
