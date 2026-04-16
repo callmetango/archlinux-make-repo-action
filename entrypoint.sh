@@ -2,28 +2,43 @@
 
 set -e -u
 
-log_group() {
+GL_GROUP_OPEN=0
+
+glgrp() {
+	if [ GL_GROUP_OPEN = 1 ]; then
+		printf "::endgroup::\n"
+	fi
 	printf "::group::${1}\n"
+	GL_GROUP_OPEN=1
 }
 
-log_endgroup() {
-	printf "::endgroup::\n"
+glgrpend() {
+	if [ GL_GROUP_OPEN = 1 ]; then
+		printf "::endgroup::\n"
+	fi
+	GL_GROUP_OPEN=0
+}
+
+glend() {
+	if [ GL_GROUP_OPEN = 1 ]; then
+		printf "::endgroup::\n"
+		GL_GROUP_OPEN=0
+	fi
 }
 
 HOME=/home/runner
 WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
 WORKPATH="${WORKPATH%/}"
 
-log_group "Copying files from $WORKPATH to $HOME/work"
+glgrp "Copying files from $WORKPATH to $HOME/work"
 mkdir -p "$HOME"/work
 cd "$HOME"/work
 cp -rfv "$WORKPATH"/* ./
-log_endgroup
 
-log_group "Running repo-add"
+glgrp "Running repo-add"
 repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.*
-log_endgroup
 
-log_group "Copying files from $HOME/work to $WORKPATH"
+glgrp "Copying files from $HOME/work to $WORKPATH"
 sudo cp -fvu * "$WORKPATH"
-log_endgroup
+
+glend
