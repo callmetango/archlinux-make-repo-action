@@ -12,7 +12,9 @@ USER runner
 
 # Copy files
 #COPY LICENSE README.md /
+COPY github-log.sh /github-log.sh
 COPY --chmod=755 entrypoint.sh /entrypoint.sh
+
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
