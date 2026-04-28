@@ -2,39 +2,24 @@
 
 set -e -u
 
-GL_GROUP_OPEN=0
+. github-log.sh
 
-glgrp() {
-	[ $GL_GROUP_OPEN = 1 ] && printf "::endgroup::\n"
-	printf "::group::${1}\n"
-	GL_GROUP_OPEN=1
-}
+# constants
+BUILDDIR="$HOME"/work
+GH_WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
+GH_WORKPATH="${GH_WORKPATH%/}"
 
-glgrpend() {
-	[ $GL_GROUP_OPEN = 1 ] && printf "::endgroup::\n"
-	GL_GROUP_OPEN=0
-}
+# main
 
-glend() {
-	if [ $GL_GROUP_OPEN = 1 ]; then
-		printf "::endgroup::\n"
-		GL_GROUP_OPEN=0
-	fi
-}
-
-HOME=/home/runner
-WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
-WORKPATH="${WORKPATH%/}"
-
-glgrp "Copying files from $WORKPATH to $HOME/work"
-mkdir -p "$HOME"/work
-cd "$HOME"/work
-cp -rfv "$WORKPATH"/* ./
+glgrp "Copying files from $GH_WORKPATH to $BUILDDIR"
+mkdir -p "$BUILDDIR"
+cd "$BUILDDIR"
+cp -rfv "$GH_WORKPATH"/* ./
 
 glgrp "Running repo-add"
 repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.*
 
-glgrp "Copying files from $HOME/work to $WORKPATH"
-sudo cp -fvu * "$WORKPATH"
+glgrp "Copying files from $HOME/work to $GH_WORKPATH"
+sudo cp -fvu * "$GH_WORKPATH"
 
 glend
