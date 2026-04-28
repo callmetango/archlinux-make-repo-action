@@ -5,6 +5,7 @@ set -e -u
 . /github-log.sh
 
 # constants
+HOME=/home/runner
 BUILDDIR="$HOME"/work
 GH_WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
 GH_WORKPATH="${GH_WORKPATH%/}"
