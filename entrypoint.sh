@@ -2,7 +2,7 @@
 
 set -e -u
 
-. github-log.sh
+. /github-log.sh
 
 # constants
 BUILDDIR="$HOME"/work
