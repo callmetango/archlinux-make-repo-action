@@ -20,7 +20,7 @@ cp -rfv "$GH_WORKPATH"/* ./
 glgrp "Running repo-add"
 repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.*
 
-glgrp "Copying files from $HOME/work to $GH_WORKPATH"
+glgrp "Copying files from $BUILDDIR to $GH_WORKPATH"
 sudo cp -fvu * "$GH_WORKPATH"
 
 glend
