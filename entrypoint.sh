@@ -21,4 +21,4 @@ cd "$GH_WORKPATH" || exit
 
 echo "Running repo-add"
 repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.tar \
-	*.pkg.tar.{gz,bz2,.xz,.zst,lzo,lrz,lz4,lz,Z}
+	*.pkg.tar.{gz,bz2,xz,zst,lzo,lrz,lz4,lz,Z}
