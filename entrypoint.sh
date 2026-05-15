@@ -4,23 +4,21 @@ set -e -u
 
 . /github-log.sh
 
-# constants
+# Constants
+
 HOME=/home/runner
 BUILDDIR="$HOME"/work
 GH_WORKPATH="$GITHUB_WORKSPACE/$INPUT_PATH"
 GH_WORKPATH="${GH_WORKPATH%/}"
 
-# main
+# Set up environment
 
-glgrp "Copying files from $GH_WORKPATH to $BUILDDIR"
-mkdir -p "$BUILDDIR"
-cd "$BUILDDIR"
-cp -rfv "$GH_WORKPATH"/* ./
+sudo chmod -R 0777 "$GITHUB_WORKSPACE"
 
-glgrp "Running repo-add"
-repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.*
+# Main
 
-glgrp "Copying files from $BUILDDIR to $GH_WORKPATH"
-sudo cp -fvu * "$GH_WORKPATH"
+cd "$GH_WORKPATH" || exit
 
-glend
+echo "Running repo-add"
+repo-add "${INPUT_REPONAME}.db${INPUT_COMPRESSION}" *.pkg.tar \
+	*.pkg.tar.{gz,bz2,.xz,.zst,lzo,lrz,lz4,lz,Z}
